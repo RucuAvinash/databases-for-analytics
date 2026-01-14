@@ -1,6 +1,6 @@
 # Exercise 01: World Database SQL Practice
 
-- Name:
+- Name: Rucmanidevi Sethu
 - Course: Database for Analytics
 - Module: 1
 - Database Used: World Database
@@ -27,18 +27,11 @@
 Why were these data types selected?
 
 ### Answer
-_Write your explanation here._
+Population is stored as INT datatype. Population counts are always stored as whole nunumbers and it does not make sense to store them as decimal.Storing as INT improves processing time.
+LifeExpectancy is stored as decimal(3,1) which allows values from 0.0 to 99.9 which is applicable to most of the countries.
 
 ### Screenshot
-_Show the table structure or DESCRIBE output._
-
-```sql
-DESCRIBE country;
-```
-
-![Q1 Screenshot](screenshots/q1_datatypes.png)
-
----
+![alt text](image-1.png)
 
 ## Question 2
 
@@ -46,7 +39,8 @@ DESCRIBE country;
 Why do you think this data type was selected?
 
 ### Answer
-_Write your explanation here._
+'country.IndepYear' is stored as smallInt.
+this datatype uses only 2 bytes of storage unlike INT datatypes which uses 4 bytes of storage. This datatype also prevent non-numerical and fractional values.
 
 ### Screenshot
 
@@ -56,6 +50,8 @@ DESCRIBE country;
 
 ![Q2 Screenshot](screenshots/q2_indepyear.png)
 
+![alt text](image-2.png)
+
 ---
 
 ## Question 3
@@ -64,9 +60,7 @@ DESCRIBE country;
 Explain why your proposed data type might be better in some situations.
 
 ### Answer
-_Write your explanation here._
-
----
+'country.IndepYear' can also be stored in INT format , which supports larger range of data to be stored.
 
 ## Question 4
 
@@ -82,8 +76,7 @@ ORDER BY Name;
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_cities_sorted.png)
-
+![alt text](image-3.png)
 ---
 
 ## Question 5
@@ -100,7 +93,7 @@ ORDER BY GovernmentForm;
 
 ### Screenshot
 
-![Q5 Screenshot](screenshots/q5_government_forms.png)
+![alt text](image-4.png)
 
 ---
 
@@ -118,8 +111,7 @@ WHERE Continent = 'Oceania';
 
 ### Screenshot
 
-![Q6 Screenshot](screenshots/q6_oceania.png)
-
+![alt text](image-5.png)
 ---
 
 ## Question 7
@@ -131,11 +123,12 @@ Write a SQL command to **list the names and country code of all cities**.
 ```sql
 SELECT Name, CountryCode
 FROM city;
+
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_city_countrycode.png)
+![alt text](image-6.png)
 
 ---
 
@@ -153,7 +146,7 @@ WHERE Name = 'Nashville-Davidson';
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_update_city.png)
+![alt text](image-7.png)
 
 ---
 
@@ -171,7 +164,7 @@ VALUES ('NAR', 'Narnia', 'Europe', 'Fantasy', 1000000);
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_insert_narnia.png)
+![alt text](image-8.png)
 
 ---
 
@@ -188,4 +181,4 @@ WHERE Code = 'NAR';
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_delete_narnia.png)
+![alt text](image-9.png)
