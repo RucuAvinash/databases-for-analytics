@@ -23,16 +23,16 @@
 When importing records from `worldPGSQL.sql`, **how many cities were imported**?
 
 ### Answer
-_Write the number of cities imported._
+4079
 
 ### Screenshot
-_Show evidence of how you determined this (for example, a COUNT query)._
+![alt text](image-10.png)
 
 ```sql
 SELECT COUNT(*) as Total_cities_imported FROM city
 ```
 
-![alt text](image-10.png)
+
 
 ---
 
@@ -55,6 +55,7 @@ FROM country c
 INNER JOIN countrylanguage cl
 ON c.code = cl.countrycode
 ORDER BY country_name
+```
 ### Screenshot
 
 exercises/screenshots/Excercise2_screenshot2.png
