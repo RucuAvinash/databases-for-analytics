@@ -58,11 +58,11 @@ ORDER BY country_name
 ```
 ### Screenshot
 
-exercises/screenshots/Excercise2_screenshot2.png
+![alt text](image-23.png)
 ---
 ### Screenshot2
 
-exercises/screenshots/Excercise2_screenshot2_1.png
+![alt text](image-24.png)
 ----
 
 ## Question 3
