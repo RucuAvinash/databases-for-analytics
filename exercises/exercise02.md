@@ -57,11 +57,11 @@ ON c.code = cl.countrycode
 ORDER BY country_name
 ### Screenshot
 
-![alt text](image-21.png)
+exercises/screenshots/Excercise2_screenshot2.png
 ---
 ### Screenshot2
 
-![alt text](image-22.png)
+exercises/screenshots/Excercise2_screenshot2_1.png
 ----
 
 ## Question 3
@@ -105,7 +105,7 @@ ON country.code = countrylanguage.countrycode;
 **In your own words**, describe what data the **second query returns that the first query does not**.
 
 ### Answer
-The second query returns all the countries from the left table including records that are not present in the right table.
+The second query returns all the countries from the left table including records that are not present in the right table, whereas the first query returns matching records where country code is seen in both the tables.
 
 ---
 
