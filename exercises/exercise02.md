@@ -57,10 +57,12 @@ ON c.code = cl.countrycode
 ORDER BY country_name
 ### Screenshot
 
-![alt text](image-11.png)
-![alt text](image-12.png)
-
+![alt text](image-21.png)
 ---
+### Screenshot2
+
+![alt text](image-22.png)
+----
 
 ## Question 3
 
