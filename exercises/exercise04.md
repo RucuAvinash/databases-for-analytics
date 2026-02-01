@@ -57,16 +57,23 @@ After the `create_engine` command is executed, **what are the three statements r
 ### Python Code
 
 ```python
-connection = engine.connect()
-results = connection.execute(text(query))
-for row in result:
-  print (row)
+query = """
+SELECT c.Name AS name, COUNT(*) AS num_languages
+FROM country c
+JOIN countrylanguage cl ON c.Code = cl.CountryCode
+WHERE cl.IsOfficial = 'T'
+GROUP BY c.Name
+HAVING COUNT(*) > 2
+ORDER BY num_languages DESC;
+"""
+df = pd.read_sql(query, engine)
+df
 
 ```
 
 ### Screenshot
 
-![alt text](image-34.png)
+![alt text](image-36.png)
 
 ---
 
