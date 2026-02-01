@@ -1,8 +1,8 @@
 # Exercise 04: Advanced SQL, Jupyter, and Visualization
 
-- Name:
+- Name: Rucmanidevi Sethu
 - Course: Database for Analytics
-- Module:
+- Module: 4
 - Database Used: World Database
 - Tools Used: PostgreSQL, SQLAlchemy, Pandas, Jupyter Notebooks
 
@@ -31,12 +31,20 @@ Considering the World database, write a SQL statement that will **display the na
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT c.name as country_name,
+count(*) AS number_of_official_languages
+FROM country c
+JOIN countrylanguage cl
+ON c.code = cl.countrycode
+WHERE cl.isofficial = 'T'
+group by c.name
+HAVING count(*) >2
+ORDER BY number_of_official_languages DESC;
 ```
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_official_language_counts.png)
+![Q1 Screenshot]![alt text](image-33.png)
 
 ---
 
@@ -49,12 +57,16 @@ After the `create_engine` command is executed, **what are the three statements r
 ### Python Code
 
 ```python
-# Your three Python statements here
+connection = engine.connect()
+results = connection.execute(text(query))
+for row in result:
+  print (row)
+
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_jupyter_query_results.png)
+![alt text](image-34.png)
 
 ---
 
@@ -69,9 +81,16 @@ Using **Jupyter Notebooks**, write the Python code needed to produce the followi
 ### Python Code
 
 ```python
-# Your Python code here
+plt.figure(figsize=(12,6))
+plt.bar(df['country_name'],df['number_of_official_languages'],color='skyblue')
+plt.xlabel("Country")
+plt.ylabel("Number of Official Languages")
+plt.title("Countries with more than two official languages")
+plt.xticks(rotation=45,ha='right')
+plt.tight_layout()
+plt.show()
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_countries_graph.png)
+![alt text](image-35.png)
