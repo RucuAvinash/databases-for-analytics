@@ -1,8 +1,8 @@
 # Exercise 05: SQLDA Database - Dates, Data Quality, Arrays, and JSON
 
-- Name:
+- Name:Rucmanidevi Sethu
 - Course: Database for Analytics
-- Module:
+- Module:5
 - Database Used:  `sqlda` (Sample Datasets)
 - Tools Used: PostgreSQL (pgAdmin or psql)
 
@@ -42,12 +42,13 @@ year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT DISTINCT EXTRACT (year FROM sent_date)::INT AS list_of_years FROM emails
+ORDER BY list_of_years
 ```
 
 ### Screenshot
 
-![Q1 Screenshot](screenshots/q1_email_years.png)
+![alt text](image-37.png)
 
 ---
 
@@ -65,12 +66,15 @@ count   year
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT COUNT(*) AS count,EXTRACT(year FROM sent_date) AS year
+FROM emails
+GROUP BY year
+ORDER BY year
 ```
 
 ### Screenshot
 
-![Q2 Screenshot](screenshots/q2_message_count_by_year.png)
+![alt text](image-39.png)
 
 ---
 
@@ -86,12 +90,15 @@ Only include emails that contain **both** a sent date and an opened date.
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT sent_date,opened_date,(opened_date-sent_date) AS Intreval
+from emails
+WHERE sent_date IS NOT NULL
+AND opened_date IS NOT NULL
 ```
 
 ### Screenshot
 
-![Q3 Screenshot](screenshots/q3_sent_opened_interval.png)
+![alt text](image-40.png)
 
 ---
 
@@ -102,12 +109,14 @@ Using the `sqlda` database, write the SQL needed to show emails that contain an 
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT email_id,customer_id, email_subject,opened_date,sent_date
+from emails
+WHERE opened_date < sent_date;
 ```
 
 ### Screenshot
 
-![Q4 Screenshot](screenshots/q4_opened_before_sent.png)
+![alt text](image-41.png)
 
 ---
 
@@ -119,11 +128,13 @@ After looking at the data, **why is this the case?**
 
 ### Answer
 
-_Write your explanation here._
+/* There can be two possible reasons why the opened date is prior to the sent date
+1. Timestamp inconsistency on how the data is collected.
+2. Inaccurate data due to timestamp-logging issues./*
 
 ### Screenshot (if requested by instructor)
 
-![Q5 Screenshot](screenshots/q5_explain_date_issue.png)
+![alt text](image-42.png)
 
 ---
 
@@ -160,7 +171,7 @@ CREATE TEMP TABLE customer_dealership_distance AS (
 
 ### Answer
 
-_Write your explanation here._
+The following code creates 3 Temporary tables customer_points, customer_dealership_distance and dealership_points. The customer_points table contains the customer_id and point representing location based on longtitude,latitude.The dealership_points table contains the dealership_id and the point representing the location of the dealership based on the longtitude, latitude.The customer_dealership_distance contains the customer_id , dealership_id and the distance based on every customer_id and cross joins with every dealship_id and calculates a straigt line distance between the points(c.lng_lat.pint-d.lng_lat)
 
 ---
 
@@ -177,12 +188,15 @@ For example - dealership 1 is below:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT dealership_id , ARRAY_AGG(last_name||''||first_name) AS Array_of_Salespeople
+FROM salespeople
+GROUP BY dealership_id
+ORDER BY dealership_id
 ```
 
 ### Screenshot
 
-![Q7 Screenshot](screenshots/q7_salespeople_array_by_dealership.png)
+![alt text](image-43.png)
 
 ---
 
@@ -202,12 +216,17 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT s.dealership_id,state,count(*)as number_of_salespeople,ARRAY_AGG(last_name||''||first_name)
+FROM salespeople s
+LEFT JOIN dealerships d
+ON s.dealership_id = d.dealership_id
+GROUP BY s.dealership_id,state
+ORDER BY state
 ```
 
 ### Screenshot
 
-![Q8 Screenshot](screenshots/q8_salespeople_array_state_count.png)
+![alt text](image-45.png)
 
 ---
 
@@ -218,12 +237,13 @@ Using the `sqlda` database, write the SQL needed to convert the **customers** ta
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT row_to_json(customers)
+FROM customers;
 ```
 
 ### Screenshot
 
-![Q9 Screenshot](screenshots/q9_customers_to_json.png)
+![alt text](image-46.png)
 
 ---
 
@@ -244,9 +264,20 @@ Reference image:
 ### SQL
 
 ```sql
--- Your SQL here
+SELECT row_to_json(t)
+FROM(
+SELECT d.dealership_id,
+	   d.state,
+       count(*) AS number_of_salespeople,
+	   ARRAY_AGG(last_name||''||first_name
+	   ORDER BY last_name,first_name) AS Array_of_salespeople
+	   FROM salespeople s
+	   LEFT JOIN dealerships d  
+	   ON d.dealership_id = s.dealership_id
+	   GROUP BY d.dealership_id, d.state
+	   ORDER BY d.state) as t;
 ```
 
 ### Screenshot
 
-![Q10 Screenshot](screenshots/q10_salespeople_array_to_json.png)
+![alt text](image-47.png)
