@@ -1,7 +1,7 @@
 # Module 6 - Exercise 1: Creating a Data Warehouse
 From the Operational Model to the Dimensional Model
 
-- Name:
+- Name:Rucmanidevi Sethu
 - Course: Database for Analytics
 - Module: 6
 
@@ -107,7 +107,8 @@ Save your diagram image in this repo and embed it below.
 
 #### Diagram
 
-![Star Schema Diagram](star-schema.png)
+![alt text](image-48.png)
+![alt text](image-49.png)
 
 ---
 
@@ -121,4 +122,6 @@ In 1-2 short paragraphs, explain:
 
 #### Design Notes
 
-_Write your design notes here._
+I selected the Customer, Parts and Date dimensions because they are the core attributes to describe the daily sales. The Customer dimension provides the customer details on who made the purchase, and customer demographics, and total quantity purchased while the Parts dimension provides details about the Parts sold and helps in analyzing the cost by multiplying the unit price*  number of units purchased and the Date dimension breaks down the date into year, month day , quarter so the sales on a specific year , day or quarter can be queried.  
+The Fact table grain is “daily sales” per customer per part because the required analytic questions is trying to understand sales pattern. The fact grain also helps to track sales over a period of time and sales by customer and sales by parts.  The grain of the table is to make sure each row /record focuses on daily total sales to a customer for a part purchased.
+I was able to answer the questions by joining the fact table with the three dimensions, the model supports detailed drill downs questions regarding sales over time, customer-level sales and product- level sales.
