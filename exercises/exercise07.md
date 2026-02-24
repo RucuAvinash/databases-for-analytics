@@ -31,7 +31,7 @@ The original dataset had 9 columns , but for the purpose of this excercise I cre
 (Table 4- dimtransaction)it includes 4 columns and 955 rows
 (Table 5-facttable)it includes 14 columns and 84219 rows.
 ## Show a data dictionary - a table describing each data attribute/feature/column.
-"C:\Repos\databases-for-analytics\exercises\Data_dictionary.xlsx"
+
 |Column	|Table|	Definition|
 |-------|-----|------------|
 FactTablePK	|FactTable(Primary Key)	|This column serves as a unique identifier for the table.|
