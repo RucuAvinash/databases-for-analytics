@@ -1,8 +1,8 @@
 # Exercise 07: Medical Claims Database – Joins, Grouping, and Data Quality
 
-- Name:
+- Name: Rucmanidevi Sethu
 - Course: Database for Analytics
-- Module: /
+- Module: 7
 - Database Used: Medical Claims Database (PostgreSQL)
 
 ---
@@ -79,6 +79,7 @@ At least one query where you group by and aggregate data
 ![1771951627225](image/exercise07/1771951627225.png)
 ![1771953912939](image/exercise07/1771953912939.png)
 ##-------------------------------------------------------------##
+```SQL Query
 select dt.transactiontype,dt.transaction, dt.adjustmentreasons,
 d.year as Adjustment_Year,d.month as Adjustment_month,
 sum(f.adjustment) as total_adjustment_amount
@@ -90,3 +91,4 @@ ON d.dimdatepostpk=f.dimdatepostpk
 GROUP BY dt.transactiontype,dt.transaction, dt.adjustmentreasons,d.year,d.month
 HAVING d.year = '2020' OR d.month ='January'
 ORDER BY dt.transactiontype
+````
