@@ -20,7 +20,7 @@ At least one join
 At least one query where you group by and aggregate data
 ---
 ## The initial data source
-[text](https://www.kaggle.com/datasets/tomaslui/healthcare-dataset/data)
+[text][(https://www.kaggle.com/datasets/tomaslui/healthcare-dataset/data?select=dimDate.csv)]
 
 ##The format of your data, include count of column and rows.
 The data is in the csv format.
@@ -92,3 +92,6 @@ GROUP BY dt.transactiontype,dt.transaction, dt.adjustmentreasons,d.year,d.month
 HAVING d.year = '2020' OR d.month ='January'
 ORDER BY dt.transactiontype
 ````
+
+
+[def]: https://www.kaggle.com/datasets/tomaslui/healthcare-dataset/data
